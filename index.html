@@ -8,15 +8,15 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: #faf8ef;
+            background: #f5f5dc;
             margin: 0;
         }
         h1 {
-            color: #776e65;
+            color: #cd853f;
         }
         #game-container {
             display: inline-block;
-            background: #bbada0;
+            background: #d56e21;
             padding: 10px;
             border-radius: 10px;
             margin-top: 10px;
@@ -31,7 +31,7 @@
             grid-template-rows: repeat(4, 80px);
             gap: 10px;
             padding: 10px;
-            background: #bbada0;
+            background: #000000;
             border-radius: 10px;
         }
         .tile {
@@ -42,7 +42,7 @@
             font-weight: bold;
             text-align: center;
             border-radius: 5px;
-            background: #cdc1b4;
+            background: #43c6db;  /* Arka planı siyah yapıyoruz */
             color: #776e65;
             display: flex;
             justify-content: center;
@@ -73,7 +73,7 @@
             font-size: 16px;
             font-weight: bold;
             color: white;
-            background: #8f7a66;
+            background: #43c6db;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -83,7 +83,7 @@
 <body>
     <h1>2048 Oyunu</h1>
     <div id="score-container">
-        Puan: <span id="score">0</span> | En Yüksek Puan: <span id="high-score">0</span>
+        Puan: <span id="score">0</span>  |  En Yüksek Puan: <span id="high-score">0</span>
     </div>
     <div id="game-container">
         <div class="grid" id="grid"></div>
@@ -108,7 +108,7 @@
                     32: "#f67c5f", 64: "#f65e3b", 128: "#edcf72", 256: "#edcc61",
                     512: "#edc850", 1024: "#edc53f", 2048: "#edc22e"
                 };
-                return colors[num] || "#cdc1b4";
+                return colors[num] || "#ffffff";
             }
             
             function initGame() {
@@ -128,7 +128,7 @@
                     let tile = document.createElement("div");
                     tile.classList.add("tile");
                     tile.textContent = num || "";
-                    tile.style.background = getTileColor(num);
+                    tile.style.background = getTileColor(num); // Sayının rengi burada ayarlanıyor
                     grid.appendChild(tile);
                 }));
                 scoreDisplay.textContent = score;
