@@ -21,6 +21,9 @@
             border-radius: 10px;
             margin-top: 10px;
             position: relative;
+            width: 370px;  /* Mobil cihazlar için */
+            height: 370px; /* Mobil cihazlar için */
+            touch-action: none;  /* Touch events için */
         }
         .grid {
             display: grid;
@@ -35,12 +38,15 @@
             width: 80px;
             height: 80px;
             line-height: 80px;
-            font-size: 24px;
+            font-size: 32px;  /* Sayı boyutunu büyütüyoruz */
             font-weight: bold;
             text-align: center;
             border-radius: 5px;
             background: #cdc1b4;
             color: #776e65;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #score-container {
             font-size: 20px;
@@ -174,13 +180,56 @@
                 return matrix[0].map((_, i) => matrix.map(row => row[i])).reverse();
             }
 
+            // Mouse or Keyboard controls (Desktop)
             document.addEventListener("keydown", (e) => {
                 if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
                     moveBoard(e.key.replace("Arrow", "").toLowerCase());
                     updateBoard();
                 }
             });
-            
+
+            // Mobile swipe controls
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
+
+            grid.addEventListener("touchstart", (e) => {
+                const touch = e.touches[0];
+                touchStartX = touch.clientX;
+                touchStartY = touch.clientY;
+            });
+
+            grid.addEventListener("touchend", (e) => {
+                const touch = e.changedTouches[0];
+                touchEndX = touch.clientX;
+                touchEndY = touch.clientY;
+
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const deltaX = touchEndX - touchStartX;
+                const deltaY = touchEndY - touchStartY;
+
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // Yatay kaydırma
+                    if (deltaX > 0) {
+                        moveBoard("right");
+                    } else {
+                        moveBoard("left");
+                    }
+                } else {
+                    // Dikey kaydırma
+                    if (deltaY > 0) {
+                        moveBoard("down");
+                    } else {
+                        moveBoard("up");
+                    }
+                }
+                updateBoard();
+            }
+
             restartBtn.addEventListener("click", initGame);
             initGame();
         });
