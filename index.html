@@ -21,35 +21,35 @@
             border-radius: 10px;
             margin-top: 10px;
             position: relative;
-            width: 370px;  /* Mobil cihazlar için */
-            height: 370px; /* Mobil cihazlar için */
+            width: 333px;  /* %10 küçültülmüş genişlik */
+            height: 333px; /* %10 küçültülmüş yükseklik */
             touch-action: none;  /* Touch events için */
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(4, 80px);
-            grid-template-rows: repeat(4, 80px);
-            gap: 10px;
-            padding: 10px;
+            grid-template-columns: repeat(4, 72px); /* %10 küçültülmüş hücre boyutu */
+            grid-template-rows: repeat(4, 72px);    /* %10 küçültülmüş hücre boyutu */
+            gap: 9px;                               /* Hücreler arası mesafe */
+            padding: 9px;                           /* Küçültülmüş padding */
             background: #000000;
             border-radius: 10px;
         }
         .tile {
-            width: 80px;
-            height: 80px;
-            line-height: 80px;
-            font-size: 32px;  /* Sayı boyutunu büyütüyoruz */
+            width: 72px;                            /* %10 küçültülmüş boyut */
+            height: 72px;                           /* %10 küçültülmüş boyut */
+            line-height: 72px;                      /* Sayıların ortalanması */
+            font-size: 28px;                        /* Sayı boyutunu küçültme */
             font-weight: bold;
             text-align: center;
             border-radius: 5px;
-            background: #43c6db;  /* Arka planı siyah yapıyoruz */
+            background: #43c6db;  
             color: #776e65;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         #score-container {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #776e65;
             margin-top: 10px;
@@ -65,7 +65,7 @@
             font-weight: bold;
             padding: 20px;
             border-radius: 10px;
-            display: none; /* Başlangıçta gizli */
+            display: none;
         }
         #restart-btn, #retry-btn {
             margin-top: 10px;
